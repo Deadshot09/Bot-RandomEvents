@@ -27,6 +27,7 @@ public class travelcommand implements Commands {
             }
         }
         e.getTextChannel().sendMessage(event).queue();
+
     }
     @Override
     public void exe(boolean success , MessageReceivedEvent e){
