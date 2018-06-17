@@ -1,0 +1,2 @@
+# Bot-RandomEvents
+Discord bot.
