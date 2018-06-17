@@ -1,2 +1,3 @@
 # Bot-RandomEvents
-Discord bot.
+Discord bot random events.
+used for rp purposes.
