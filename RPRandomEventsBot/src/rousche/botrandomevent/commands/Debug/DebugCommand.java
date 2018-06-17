@@ -8,7 +8,7 @@ import rousche.botrandomevent.Main;
 
 public class DebugCommand implements Commands {
     public void DebugCommand(){
-        //Main.commands.put("")
+        //Main.commands.put("x", y.class);
 
     }
 
@@ -20,7 +20,10 @@ public class DebugCommand implements Commands {
 
     @Override
     public boolean called (String args[] , MessageReceivedEvent e){
-        return true;
+        if(isBotCommander(e.getMember()))
+            return true;
+        else
+            return false;
     }
     @Override
     public void action(String args[] , MessageReceivedEvent e){
