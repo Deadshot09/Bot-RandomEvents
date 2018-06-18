@@ -1,33 +1,13 @@
 package rousche.botrandomevent.commands.Debug;
 
-import net.dv8tion.jda.core.entities.*;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
-import rousche.botrandomevent.Commands;
-import rousche.botrandomevent.Main;
+import rousche.botrandomevent.commands.debugcommandsCore;
 
-
-public class DebugCommand implements Commands {
-    public void DebugCommand(){
-        //Main.commands.put("x", y.class);
-
-    }
-
-    public boolean isBotCommander(Member user){
-        if(user.getRoles().contains(user.getGuild().getRoleById("455525914319519767")))
-            return true;
-        return false;
-    }
-
-    @Override
-    public boolean called (String args[] , MessageReceivedEvent e){
-        if(isBotCommander(e.getMember()))
-            return true;
-        else
-            return false;
-    }
+public class debugcommand extends debugcommandsCore {
     @Override
     public void action(String args[] , MessageReceivedEvent e){
+        e.getTextChannel().sendMessage("fortnite good game").queue();
+
     }
-    @Override
-    public void exe(boolean success , MessageReceivedEvent e){}
+
 }
