@@ -3,6 +3,7 @@ package rousche.botrandomevent;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class CommandParser {
 
@@ -18,6 +19,23 @@ public class CommandParser {
         String[] args = new String[split.size() - 1];
         split.subList(1,split.size()).toArray(args);
 
+        System.out.println(Arrays.toString(args));
+        try {
+            if (!args[0].contains(Character.toString('"')))
+                return new CommandContainer(raw, bh, splitbh, invoke, args, e);
+        }catch(IndexOutOfBoundsException ex){
+            return new CommandContainer(raw, bh, splitbh, invoke, args, e);
+        }
+
+        String[] agrs = (String.join(" ", args)).split(Character.toString('"'));
+        System.out.println(Arrays.toString(agrs));
+        ArrayList<String> arrayList = new ArrayList<String>();
+        for(int i = 0; i<agrs.length;i++) {
+            if(i%2!=0) //value is odd
+                arrayList.add(agrs[i]);
+        }
+        args = arrayList.toArray(new String[0]);
+        System.out.println(Arrays.toString(args));
         return new CommandContainer(raw, bh,splitbh,invoke,args,e);
     }
 

@@ -5,9 +5,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Inventory implements Serializable {
-    public Map<String, Integer> items = new HashMap<String, Integer>();
+    public Map<String, Float> items = new HashMap<String, Float>();
 
-    public void Inventory(){
+    public Inventory(){
 
     }
 }
