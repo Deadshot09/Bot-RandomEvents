@@ -9,6 +9,10 @@ import rousche.botrandomevent.commands.Classes.*;
 import rousche.botrandomevent.commands.Multi.locationcommand;
 import rousche.botrandomevent.resources.Handler;
 import rousche.botrandomevent.resources.Userclass;
+import rousche.botrandomevent.resources.commandattributes;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class commandsCore implements Commands {
 
@@ -16,6 +20,7 @@ public class commandsCore implements Commands {
         Main.commands.put("travel", new travelcommand());
         Main.commands.put("inventory", new inventorycommand());
         Main.commands.put("location", new locationcommand());
+        Main.commands.put("help", new helpcommand());
     }
 
     @Override
@@ -32,4 +37,8 @@ public class commandsCore implements Commands {
 
     @Override
     public void action(String args[] , MessageReceivedEvent e){}
+    @Override
+    public ArrayList<commandattributes> attrs(){
+        return(new ArrayList<commandattributes>(Arrays.asList(new commandattributes("","",""))));
+    }
 }

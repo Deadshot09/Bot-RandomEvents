@@ -5,6 +5,10 @@ import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import rousche.botrandomevent.Commands;
 import rousche.botrandomevent.Main;
 import rousche.botrandomevent.commands.Debug.*;
+import rousche.botrandomevent.resources.commandattributes;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import static rousche.botrandomevent.Main.ignoreRoles;
 
@@ -40,4 +44,8 @@ public class debugcommandsCore implements Commands {
 
     @Override
     public void exe(boolean success , MessageReceivedEvent e){}
+    @Override
+    public ArrayList<commandattributes> attrs(){
+        return(new ArrayList<commandattributes>(Arrays.asList(new commandattributes("","",""))));
+    }
 }

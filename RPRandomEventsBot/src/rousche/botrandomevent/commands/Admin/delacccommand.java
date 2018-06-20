@@ -6,13 +6,19 @@ import rousche.botrandomevent.Main;
 import rousche.botrandomevent.commands.admincommandsCore;
 import rousche.botrandomevent.commands.debugcommandsCore;
 import rousche.botrandomevent.resources.Userclass;
+import rousche.botrandomevent.resources.commandattributes;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static rousche.botrandomevent.Main.users;
 
 public class delacccommand extends admincommandsCore {
+    @Override
+    public ArrayList<commandattributes> attrs(){
+        return(new ArrayList<commandattributes>(Arrays.asList(new commandattributes("delacc","[User Mention]", "Deletes specified user's saved data."))));
+    }
     @Override
     public void action(String args[] , MessageReceivedEvent e) {
         List<Userclass> todel = new ArrayList<Userclass>();

@@ -5,12 +5,15 @@ import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import rousche.botrandomevent.Commands;
 import rousche.botrandomevent.Main;
 import rousche.botrandomevent.commands.Admin.*;
+import rousche.botrandomevent.resources.commandattributes;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import static rousche.botrandomevent.Main.ignoreRoles;
 
 
 public class admincommandsCore implements Commands {
-
     public static void addCommands() {
         Main.commands.put("delacc", new delacccommand());
     }
@@ -37,4 +40,9 @@ public class admincommandsCore implements Commands {
 
     @Override
     public void exe(boolean success , MessageReceivedEvent e){}
+
+    @Override
+    public ArrayList<commandattributes> attrs(){
+        return(new ArrayList<commandattributes>(Arrays.asList(new commandattributes("","",""))));
+    }
 }

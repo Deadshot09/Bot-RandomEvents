@@ -8,14 +8,21 @@ import rousche.botrandomevent.commands.admincommandsCore;
 import rousche.botrandomevent.commands.commandsCore;
 import rousche.botrandomevent.resources.Handler;
 import rousche.botrandomevent.resources.Userclass;
+import rousche.botrandomevent.resources.commandattributes;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
 
 public class locationcommand extends commandsCore {
-
-
+    @Override
+    public ArrayList<commandattributes> attrs() {
+         return(new ArrayList<commandattributes>(Arrays.asList(new commandattributes("location list", "", "Returns all locations.s"),
+                new commandattributes("location detail", "[Name]", "Returns a longer description of a location."),
+                new commandattributes("location add", "[Name] [Short desc] [Long desc]", "Adds a location to the database."),
+                new commandattributes("location remove", "[Name]", "Removes a location from the database."),
+                new commandattributes("location change", "[name] <name/short/long> [New value]", "Changes a value of a location."))));
+    }
     @Override
     public void action(String args[] , MessageReceivedEvent e){
         String x = args[0].toLowerCase();
