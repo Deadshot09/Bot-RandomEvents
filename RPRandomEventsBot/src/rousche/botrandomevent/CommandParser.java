@@ -18,7 +18,7 @@ public class CommandParser {
         String invoke = split.get(0);
         String[] args = new String[split.size() - 1];
         split.subList(1,split.size()).toArray(args);
-        
+
         ArrayList<String> arrayList = new ArrayList<String>(Arrays.asList(args));
         ArrayList<String> arrayListOutput = new ArrayList<String>();
         Integer o = 0;
@@ -57,10 +57,6 @@ public class CommandParser {
             this.invoke = invoke;
             this.args = args;
             this.e = e;
-
-
         }
     }
-
-
 }
