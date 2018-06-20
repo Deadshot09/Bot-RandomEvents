@@ -18,27 +18,29 @@ public class CommandParser {
         String invoke = split.get(0);
         String[] args = new String[split.size() - 1];
         split.subList(1,split.size()).toArray(args);
-
-        System.out.println(Arrays.toString(args));
-        try {
-            if (!args[0].contains(Character.toString('"')))
-                return new CommandContainer(raw, bh, splitbh, invoke, args, e);
-        }catch(IndexOutOfBoundsException ex){
-            return new CommandContainer(raw, bh, splitbh, invoke, args, e);
+        
+        ArrayList<String> arrayList = new ArrayList<String>(Arrays.asList(args));
+        ArrayList<String> arrayListOutput = new ArrayList<String>();
+        Integer o = 0;
+        Boolean inString = false;
+        while(o <= args.length-1) {
+            if (arrayList.get(o).startsWith(Character.toString('"')) && arrayList.get(o).endsWith(Character.toString('"'))){
+                arrayListOutput.add(arrayList.get(o).substring(1, arrayList.get(o).length()-1));
+            }else if (arrayList.get(o).startsWith(Character.toString('"')) && !inString){
+                inString = true;
+                arrayListOutput.add(arrayList.get(o).substring(1));
+            }else if(!inString)
+                arrayListOutput.add(arrayList.get(o));
+            else if (arrayList.get(o).endsWith(Character.toString('"'))){
+                inString = false;
+                arrayListOutput.set(arrayListOutput.size()-1, arrayListOutput.get(arrayListOutput.size()-1) + " " + arrayList.get(o).substring(0, arrayList.get(o).length() - 1));
+            }else if (inString)
+                arrayListOutput.set(arrayListOutput.size()-1, arrayListOutput.get(arrayListOutput.size()-1) + " " + arrayList.get(o));
+            o++;
         }
-
-        String[] agrs = (String.join(" ", args)).split(Character.toString('"'));
-        System.out.println(Arrays.toString(agrs));
-        ArrayList<String> arrayList = new ArrayList<String>();
-        for(int i = 0; i<agrs.length;i++) {
-            if(i%2!=0) //value is odd
-                arrayList.add(agrs[i]);
-        }
-        args = arrayList.toArray(new String[0]);
-        System.out.println(Arrays.toString(args));
+        args = arrayListOutput.toArray(new String[0]);
         return new CommandContainer(raw, bh,splitbh,invoke,args,e);
     }
-
 
     public class CommandContainer{
         public final String raw;
